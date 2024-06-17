@@ -1,25 +1,9 @@
-import React, { ChangeEvent, useState } from 'react';
-import styles from './inputfield.module.css';
+import React, { ChangeEvent, useState, useEffect } from 'react';
+import styles from './styles/inputfield.module.css';
+import { InputFieldProps } from './interface/interfaces';
+import OTPInput from './OTPInput';
 
-interface InputFieldProps {
-  type?: string;
-  placeholder?: string;
-  value: string; // Make value a required prop
-  onChange: (value: string) => void; // Make onChange a required prop
-  onBlur?: (value: string) => void;
-  onFocus?: () => void;
-  name?: string;
-  id?: string;
-  maxLength?: number;
-  minLength?: number;
-  disabled?: boolean;
-  readOnly?: boolean;
-  required?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-}   
-
-export const InputField: React.FC<InputFieldProps> = ({
+const InputField: React.FC<InputFieldProps> & { OTP: typeof OTPInput } = ({
   type = 'text',
   placeholder = '',
   value,
@@ -36,12 +20,15 @@ export const InputField: React.FC<InputFieldProps> = ({
   style,
   className
 }) => {
-    const [inputValue, setInputValue] = useState<string>(value);
+  const [inputValue, setInputValue] = useState<string>(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    setInputValue(newValue); // Update local state
-
+    setInputValue(newValue);
     onChange(newValue);
   };
 
@@ -49,7 +36,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     <input
       type={type}
       placeholder={placeholder}
-      value={inputValue} // Use local state value
+      value={inputValue}
       onChange={handleChange}
       onBlur={onBlur ? (e) => onBlur(e.target.value) : undefined}
       onFocus={onFocus}
@@ -65,3 +52,8 @@ export const InputField: React.FC<InputFieldProps> = ({
     />
   );
 };
+
+export {InputField};
+
+InputField.OTP = OTPInput;
+
