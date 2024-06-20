@@ -9,16 +9,16 @@ import { SizeType, sizeMap } from './constants/constant';
 const OTPInput: React.FC<OTPInputProps> = ({
   length,
   value,
-  onChange,
+  onChange, 
   onBlur,
   onFocus,
-  size = 'md', // Default size
-  gap = '8px', // Default gap
-  error = false, // Default no error
+  size = 'md', // Default size (DND)
+  gap = '8px', // Default gap (DND)
+  error = false, // Default no error (DND)
   className,
   style,
-  borderStyle = '1px solid black', // Default border style
-  errorBorderColor = 'red' // Default error border color
+  borderStyle = '1px solid black', // Default border style (DND)
+  errorBorderColor = 'red' // Default error border color (DND)
 }) => {
   const [otpValues, setOtpValues] = useState<string[]>(Array(length).fill(''));
   const inputsRef = useRef<HTMLInputElement[]>([]);
@@ -43,7 +43,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
           onChange={(e) => handleChange(e, index, otpValues, setOtpValues, onChange, length, inputsRef)}
           onKeyDown={(e) => handleKeyDown(e, index, otpValues, setOtpValues, inputsRef)} // Use handleKeyDown from handlers
           onFocus={() => handleFocus(index, onFocus)}
-          onClick={() => inputsRef.current[index].focus()}
+          onClick={() => inputsRef.current[index]?.focus()}
           onBlur={onBlur ? () => onBlur(otpValues.join('')) : undefined}
           style={{
             width: boxSize,
