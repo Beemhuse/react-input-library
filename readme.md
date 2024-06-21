@@ -86,7 +86,7 @@ Import OTPInput into your component and use it within your JSX:
 
 ```jsx
 import React, { useState } from 'react';
-import OTPInput from 'react-input-library';
+import {OTPInput} from 'react-input-library';
 
 const MyComponent = () => {
   const [otpValue, setOtpValue] = useState('');
@@ -98,7 +98,7 @@ const MyComponent = () => {
   return (
     <div>
       <h2>Enter OTP</h2>
-      <InputField.OTP
+      <OTPInput
         length={6}
         value={otpValue}
         onChange={handleChange}
@@ -145,7 +145,7 @@ The InputField OTP component can be customized in various ways:
 #### Basic InputField.OTP Usage
 
 ```jsx
-<InputField.OTP
+<OTPInput
   length={6}
   value={otpValue}
   onChange={handleChange}
@@ -155,7 +155,7 @@ The InputField OTP component can be customized in various ways:
 #### Customized InputField.OTP with Error State
 
 ```jsx
-<InputField.OTP
+<OTPInput
   length={4}
   value={otpValue}
   onChange={handleChange}
