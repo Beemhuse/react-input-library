@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import styles from './styles/inputfield.module.css';
 import { InputFieldProps } from './interface/interfaces';
-import OTPInput from './OTPInput';
+// import OTPInput from './OTPInput';
 
-const InputField: React.FC<InputFieldProps> & { OTP: typeof OTPInput } = ({
+const InputField: React.FC<InputFieldProps> = ({
   type = 'text',
   placeholder = '',
   value,
@@ -53,7 +53,7 @@ const InputField: React.FC<InputFieldProps> & { OTP: typeof OTPInput } = ({
   );
 };
 
-export {InputField};
+export default {InputField}
 
-InputField.OTP = OTPInput;
+
 

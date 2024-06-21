@@ -1,4 +1,6 @@
+// @ts-ignore
 import React from 'react';
+// @ts-ignore
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import OTPInput from '../OTPInput';
@@ -57,7 +59,7 @@ describe('OTPInput Component', () => {
     render(<OTPInput length={4} value="" onChange={() => {}} error={true} />);
     const inputBoxes = screen.getAllByRole('textbox');
 
-    inputBoxes.forEach((input) => {
+    inputBoxes.forEach((/** @type {any} */ input) => {
       expect(input).toHaveStyle('border: 2px solid red');
     });
   });
@@ -73,7 +75,7 @@ describe('OTPInput Component', () => {
     );
     const inputBoxes = screen.getAllByRole('textbox');
 
-    inputBoxes.forEach((input) => {
+    inputBoxes.forEach((/** @type {any} */ input) => {
       expect(input).toHaveStyle('border: 1px solid blue');
     });
   });

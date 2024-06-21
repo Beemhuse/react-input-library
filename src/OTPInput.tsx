@@ -24,16 +24,19 @@ const OTPInput: React.FC<OTPInputProps> = ({
   const inputsRef = useRef<HTMLInputElement[]>([]);
 
   useEffect(() => {
+    // Ensure the length difference is non-negative
+    const diff = Math.max(length - value?.length, 0);
     // Split the incoming value and fill remaining with empty strings
-    const newOtpValues = value.split('').concat(Array(length - value.length).fill(''));
+    const newOtpValues = value?.split('').concat(Array(diff).fill(''));
     setOtpValues(newOtpValues);
   }, [value, length]);
   
-  const boxSize = sizeMap[size as SizeType];
-
+ // Check if the provided size is valid, otherwise use default size
+ const validSize = sizeMap[size as SizeType] ? size : 'md';
+ const boxSize = sizeMap[validSize as SizeType];
   return (
     <div style={{ display: 'flex', gap }}>
-      {otpValues.map((otpValue, index) => (
+      {otpValues?.map((otpValue, index) => (
         <input
           key={index}
           ref={(el) => inputsRef.current[index] = el!}
@@ -43,8 +46,8 @@ const OTPInput: React.FC<OTPInputProps> = ({
           onChange={(e) => handleChange(e, index, otpValues, setOtpValues, onChange, length, inputsRef)}
           onKeyDown={(e) => handleKeyDown(e, index, otpValues, setOtpValues, inputsRef)} // Use handleKeyDown from handlers
           onFocus={() => handleFocus(index, onFocus)}
-          onClick={() => inputsRef.current[index]?.focus()}
-          onBlur={onBlur ? () => onBlur(otpValues.join('')) : undefined}
+          onClick={() => inputsRef?.current[index]?.focus()}
+          onBlur={onBlur ? () => onBlur(otpValues?.join('')) : undefined}
           style={{
             width: boxSize,
             height: boxSize,
