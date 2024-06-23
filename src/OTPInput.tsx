@@ -35,7 +35,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
  const validSize = sizeMap[size as SizeType] ? size : 'md';
  const boxSize = sizeMap[validSize as SizeType];
   return (
-    <div style={{ display: 'flex', flexWrap:"wrap", gap }}>
+    <div style={{ display: 'flex', flexWrap: "wrap", gap }}>
       {otpValues?.map((otpValue, index) => (
         <input
           key={index}
