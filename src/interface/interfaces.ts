@@ -25,7 +25,7 @@ export interface InputFieldProps {
     onBlur?: (value: string) => void;
     onFocus?: () => void;
     size?: SizeType; // Customizable box size
-    gap?: string; // Customizable gap between boxes
+    gap?: number; // Customizable gap between boxes
     error?: boolean; // Error handling
     className?: string;
     style?:React.CSSProperties;

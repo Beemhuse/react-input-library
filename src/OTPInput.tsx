@@ -13,7 +13,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
   onBlur,
   onFocus,
   size = 'md', // Default size (DND)
-  gap = '8px', // Default gap (DND)
+  gap = 10, // Default gap (DND)
   error = false, // Default no error (DND)
   className,
   style,
@@ -35,7 +35,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
  const validSize = sizeMap[size as SizeType] ? size : 'md';
  const boxSize = sizeMap[validSize as SizeType];
   return (
-    <div style={{ display: 'flex', gap }}>
+    <div style={{ display: 'flex', flexWrap:"wrap", gap }}>
       {otpValues?.map((otpValue, index) => (
         <input
           key={index}
